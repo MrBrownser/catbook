@@ -1,6 +1,4 @@
 class CatsController < ApplicationController
-  skip_before_action :verify_authenticity_token
-
   before_action :load_cat_of_the_month, only: :index
   before_action :load_cat, except: :index
 
@@ -33,13 +31,14 @@ class CatsController < ApplicationController
   private
 
   def load_cat
-    @cat = Cat.where("id = #{params[:id]}").visible.first
+    @cat = Cat.where(id: params[:id]).visible.first
 
     render text: 'Not Found', status: '404' unless @cat
   end
 
   def cats_params
-    { visible: true }.merge(params[:cat])
+    params.require(:cat).permit(:name, :birthday)
+    # { visible: true }.merge(params[:cat])
   end
 
   # Do you think this is a good place to put this logic?
