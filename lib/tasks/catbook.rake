@@ -36,7 +36,7 @@ namespace :catbook do
       1000.times do |i|
           Cat.create!(name: Faker::Name.name, birthday: Faker::Date.birthday)
         end
-        puts "\n%s: Seed catbook database\n"
+        puts "\nSeed catbook database\n"
       else
         puts "\nTask not meant to be run in other environment but development\n"
     end

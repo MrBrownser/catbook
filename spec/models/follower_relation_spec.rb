@@ -34,4 +34,4 @@ RSpec.describe FollowerRelation, :type => :model do
       expect(follower_relation.followed).to eq(cat)
     end
   end
-end
+end 
