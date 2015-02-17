@@ -17,6 +17,5 @@ RSpec.describe CatsHelper, type: :helper do
 
       expect(I18n.l(date, format: :short)).to eq(helper.localize_date(date))
     end
-
   end
 end
