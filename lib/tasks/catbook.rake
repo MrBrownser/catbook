@@ -3,6 +3,7 @@
 # http://railscasts.com/episodes/66-custom-rake-tasks
 
 require 'benchmark'
+require 'faker'
 
 namespace :catbook do
   desc "Seed follower_relations database with random data"
@@ -26,6 +27,18 @@ namespace :catbook do
       puts "\n%s: Seed follower_relations database: (real: %0.6f)\n" % [Time.now, time]
     else
       puts "\nTask not meant to be run in other environment but development"
+    end
+  end
+
+  desc "Seed the catbook database with random data"
+  task create_cats: :environment do
+    if Rails.env == "development"
+      1000.times do |i|
+          Cat.create!(name: Faker::Name.name, birthday: Faker::Date.birthday)
+        end
+        puts "\n%s: Seed catbook database\n"
+      else
+        puts "\nTask not meant to be run in other environment but development\n"
     end
   end
 end
