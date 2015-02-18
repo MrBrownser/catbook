@@ -7,7 +7,7 @@ class CatloginController < ApplicationController
 		# Session engaged
 		if cat && cat.authenticate(params[:password])
 			flash[:success] = "Login sucessful! Welcome #{cat.name}!"
-
+			
 			session[:loggedin_cat_id] = cat.id
 		else
 			flash[:error] = "Login was not sucessful"
