@@ -4,6 +4,6 @@ class CatMailer < ActionMailer::Base
   def welcome(cat)
     @cat = cat
 
-    mail to: "#{@cat.name} <#{@cat.email}>", subject: "Welcome to CatBook! Miauuuuu"
+    mail to: @cat.email, subject: "Welcome to CatBook Madafacka!!"
   end
 end
